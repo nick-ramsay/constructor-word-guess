@@ -1,0 +1,22 @@
+{
+  "name": "ls",
+  "version": "1.0.0",
+  "description": "This will be a word guess game, similar to word-guess repository, using constructors and run solely in the console.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nick-ramsay/constructor-word-guess.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nick-ramsay/constructor-word-guess/issues"
+  },
+  "homepage": "https://github.com/nick-ramsay/constructor-word-guess#readme",
+  "dependencies": {
+    "inquirer": "^7.0.0"
+  }
+}
