@@ -1,15 +1,34 @@
-var letter = require("./Letter");
+var Letter = require("./Letter");
 
 function Word(word) {
     this.word = word;
     this.guessString = function () {
-        this.word.forEach(function (){
-            console.log("Test\n");
-        })
+        for (i=0; this.word.length > i; i++) {
+            //console.log(newLetter.letter);
+            console.log(Letter);
+            //newLetter.display();
+            //console.log("guessString ran!");
+        }
+    };
+    this.guessedLetter = function () {
+
+    };
+}
+
+var wordOptions = [["e", "a", "r", "t", "h"],["m","a","r","s"]];
+var newWord;
+
+function pickWord() {
+    var randomPick = Math.floor(Math.random() * wordOptions.length);
+    newWord = new Word(wordOptions[randomPick]);
+    for (i = 0; newWord.word.length > i; i++) {
+        newLetter = new Letter(newWord.word[i], false);
+        //console.log(newLetter);
     }
 }
 
-var word1 = new Word(["e","a","r","t","h"]);
+pickWord();
 
-console.log(word1.word.length);
-word1.guessString();
+newLetter.display();
+
+newWord.guessString();

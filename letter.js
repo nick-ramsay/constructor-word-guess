@@ -1,3 +1,5 @@
+var newLetter;
+
 function Letter(letter,guessed) {
     this.letter = letter;
     this.guessed = guessed;
@@ -22,9 +24,9 @@ function Letter(letter,guessed) {
 
 module.exports = Letter;
 
-var letterOne = new Letter("a",false);
+/*var currentLetter = new Letter("a",false);
 
-letterOne.guess("a");
-//letterOne.guess("b");
-console.log(letterOne.guessed);
-letterOne.display();
+currentLetter.guess("a");
+//currentLetter.guess("b");
+console.log(currentLetter.guessed);
+currentLetter.display();*/
