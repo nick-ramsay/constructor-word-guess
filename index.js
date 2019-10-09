@@ -25,13 +25,14 @@ function userInput() {
         ]).then(function (answers) {
             console.log("Then functions...");
             var currentLetter = new Letter(answers.guess, false);
-
             currentLetter.guess(answers.guess);
             currentLetter.display();
             userInput();
         })
    
-}
+};
 
 Word.pickWord;
+Word();
+
 userInput();
