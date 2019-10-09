@@ -4,14 +4,13 @@ function Word(word) {
     this.word = word;
     this.guessString = function () {
         for (i=0; this.word.length > i; i++) {
-            //console.log(newLetter.letter);
-            console.log(Letter);
+            console.log(this.word[i]);
             //newLetter.display();
             //console.log("guessString ran!");
         }
     };
-    this.guessedLetter = function () {
-
+    this.guessedLetter = function (guess) {
+        
     };
 }
 
@@ -27,8 +26,10 @@ function pickWord() {
     }
 }
 
-pickWord();
+//pickWord();
 
-newLetter.display();
+//newLetter.display();
 
-newWord.guessString();
+//newWord.guessString();
+
+module.exports = Word;
