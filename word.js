@@ -15,18 +15,4 @@ function Word(word) {
     };
 }
 
-var wordOptions = [["e", "a", "r", "t", "h"],["m","a","r","s"]];
-var newWord;
-
-function pickWord() {
-    var randomPick = Math.floor(Math.random() * wordOptions.length);
-    newWord = new Word(wordOptions[randomPick]);
-    for (i = 0; newWord.word.length > i; i++) {
-        newLetter = new Letter(newWord.word[i], false);
-        console.log(newLetter.letter);
-        console.log("Pick word ran!");
-    }
-}
-
 module.exports = Word;
-module.exports = pickWord;

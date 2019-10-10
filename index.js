@@ -6,6 +6,19 @@ var acceptedKeys = "abcdefghijklmnopqrstuvwxyz";
 var guessesAllowed = 10;
 var message;
 
+var wordOptions = [["e", "a", "r", "t", "h"],["m","a","r","s"]];
+var newWord;
+
+function pickWord() {
+    var randomPick = Math.floor(Math.random() * wordOptions.length);
+    newWord = new Word(wordOptions[randomPick]);
+    for (i = 0; newWord.word.length > i; i++) {
+        newLetter = new Letter(newWord.word[i], false);
+        console.log(newLetter.letter);
+        console.log("Pick word ran!");
+    }
+}
+
 function userInput() {
     inquirer
         .prompt([
@@ -27,12 +40,12 @@ function userInput() {
             var currentLetter = new Letter(answers.guess, false);
             currentLetter.guess(answers.guess);
             currentLetter.display();
+            console.log(newLetter);
             userInput();
         })
    
 };
 
-Word.pickWord;
-Word();
+pickWord();
 
 userInput();

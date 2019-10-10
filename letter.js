@@ -23,10 +23,3 @@ function Letter(letter,guessed) {
 }
 
 module.exports = Letter;
-
-/*var currentLetter = new Letter("a",false);
-
-currentLetter.guess("a");
-//currentLetter.guess("b");
-console.log(currentLetter.guessed);
-currentLetter.display();*/
