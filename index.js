@@ -34,7 +34,7 @@ function newGame() {
                     if (newWord.letters[i].letter == answers.guess) {
                         console.log(newWord.letters[i].letter == answers.guess);
                         console.log(newWord.letters[i]);
-                        newWord.letters[i].guessed === true;
+                        newWord.letters[i].guessed = true;
                         console.log(newWord.letters[i].guessed);
                     };
                 }
