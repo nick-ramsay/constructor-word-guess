@@ -18,6 +18,8 @@ function Letter(letter,guessed) {
             this.guessed = true;
         } else {
             this.guessed = false;
+            guessesRemaining--;
+            console.log(guessesRemaining);
         }
     };
 }

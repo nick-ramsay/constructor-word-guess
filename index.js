@@ -4,11 +4,17 @@ var Word = require("./Word");
 
 var acceptedKeys = "abcdefghijklmnopqrstuvwxyz";
 var guessesAllowed = 10;
+var currentUnguessedCount;
+var winCount = 0;
+var guessesRemaining;
+var lossCount = 0;
 var message;
 
 var wordOptions = ["earth", "mars"];
 
 function newGame() {
+    currentUnguessedCount = 1;
+    guessesRemaining = 10;
     var randomPick = Math.floor(Math.random() * wordOptions.length);
     var randomWord = wordOptions[randomPick];
     var newWord = new Word(randomWord, []);
@@ -30,16 +36,29 @@ function newGame() {
                     }
                 }
             ]).then(function (answers) {
+                currentUnguessedCount = 0;
                 for (i = 0; i < newWord.letters.length; i++) {
-                    if (newWord.letters[i].letter == answers.guess) {
-                        console.log(newWord.letters[i].letter == answers.guess);
-                        console.log(newWord.letters[i]);
-                        newWord.letters[i].guessed = true;
-                        console.log(newWord.letters[i].guessed);
+                    switch (newWord.letters[i].letter) {
+                        case (answers.guess):
+                            newWord.letters[i].guess(answers.guess);
+                            break;
+                    }; //Marks letters.guessed as true when correctly guessed
+                    newWord.letters[i].display();
+                    switch (newWord.letters[i].guessed) {
+                        case false:
+                            currentUnguessedCount++;
                     };
-                }
-                userInput();
-            })
+                };
+                switch (currentUnguessedCount) {
+                    case 0:
+                        winCount++;
+                        console.log("Congrats! You've won!\nSo far, you've won " + winCount + " games!");
+                        newGame();
+                        break;
+                    default:
+                        userInput();
+                };
+            });
 
     };
     userInput();
