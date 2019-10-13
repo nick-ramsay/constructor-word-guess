@@ -1,14 +1,16 @@
 var Letter = require("./Letter");
-console.log("Word.js triggered...");
 
-function Word(word) {
-    console.log("Word ran!");
+function Word(word,letters) {
     this.word = word;
+    this.letters = letters;
+    this.parseLetters = function () {
+        for (i = 0; i < word.length; i++) {
+            this.letters.push(new Letter(this.word[i],false));
+        }
+    }
     this.guessString = function () {
         for (i=0; this.word.length > i; i++) {
             console.log(this.word[i]);
-            //newLetter.display();
-            //console.log("guessString ran!");
         }
     };
     this.guessedLetter = function (guess) {

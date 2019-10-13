@@ -6,46 +6,42 @@ var acceptedKeys = "abcdefghijklmnopqrstuvwxyz";
 var guessesAllowed = 10;
 var message;
 
-var wordOptions = [["e", "a", "r", "t", "h"],["m","a","r","s"]];
-var newWord;
+var wordOptions = ["earth", "mars"];
 
-function pickWord() {
+function newGame() {
     var randomPick = Math.floor(Math.random() * wordOptions.length);
-    newWord = new Word(wordOptions[randomPick]);
-    for (i = 0; newWord.word.length > i; i++) {
-        newLetter = new Letter(newWord.word[i], false);
-        console.log(newLetter.letter);
-        console.log("Pick word ran!");
-    }
-}
-
-function userInput() {
-    inquirer
-        .prompt([
-            {
-                type: "input",
-                name: "guess",
-                message: "Guess a letter!",
-                validate: function (input) {
-                    if (acceptedKeys.indexOf(input) !== -1 && input.length === 1) {
-                        return true;
-                    } else {
-                        console.log("\nNot a valid guess... Enter a single, lowercase letter");
-                        return false;
+    var randomWord = wordOptions[randomPick];
+    var newWord = new Word(randomWord, []);
+    newWord.parseLetters();
+    function userInput() {
+        inquirer
+            .prompt([
+                {
+                    type: "input",
+                    name: "guess",
+                    message: "Guess a letter!",
+                    validate: function (input) {
+                        if (acceptedKeys.indexOf(input) !== -1 && input.length === 1) {
+                            return true;
+                        } else {
+                            console.log("\nNot a valid guess... Enter a single, lowercase letter");
+                            return false;
+                        }
                     }
                 }
-            }
-        ]).then(function (answers) {
-            console.log("Then functions...");
-            var currentLetter = new Letter(answers.guess, false);
-            currentLetter.guess(answers.guess);
-            currentLetter.display();
-            console.log(newLetter);
-            userInput();
-        })
-   
-};
+            ]).then(function (answers) {
+                for (i = 0; i < newWord.letters.length; i++) {
+                    if (newWord.letters[i].letter == answers.guess) {
+                        console.log(newWord.letters[i].letter == answers.guess);
+                        console.log(newWord.letters[i]);
+                        newWord.letters[i].guessed === true;
+                        console.log(newWord.letters[i].guessed);
+                    };
+                }
+                userInput();
+            })
 
-pickWord();
-
-userInput();
+    };
+    userInput();
+}
+newGame();
