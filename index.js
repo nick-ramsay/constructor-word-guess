@@ -6,18 +6,16 @@ var acceptedKeys = "abcdefghijklmnopqrstuvwxyz";
 var guessesAllowed = 10;
 var currentUnguessedCount;
 var winCount = 0;
-var guessesRemaining;
 var lossCount = 0;
 var message;
 
-var wordOptions = ["earth", "mars"];
+var wordOptions = ["mercury", "venus", "earth", "mars", "saturn", "jupiter", "neptune", "uranus"];
 
 function newGame() {
     currentUnguessedCount = 1;
-    guessesRemaining = 10;
     var randomPick = Math.floor(Math.random() * wordOptions.length);
     var randomWord = wordOptions[randomPick];
-    var newWord = new Word(randomWord, []);
+    var newWord = new Word(randomWord, [], 10);
     newWord.parseLetters();
     newWord.guessString();
     function userInput() {
@@ -57,7 +55,16 @@ function newGame() {
                         newGame();
                         break;
                     default:
-                        userInput();
+                        switch (newWord.guessesRemaining) {
+                            case 0:
+                                console.log("You've run out of guesses! Try a new word.");
+                                newGame();
+                                break;
+                            default:
+                                newWord.wrongGuess(answers.guess);
+                                userInput();
+                        };
+
                 };
             });
 
