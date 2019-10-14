@@ -19,6 +19,7 @@ function newGame() {
     var randomWord = wordOptions[randomPick];
     var newWord = new Word(randomWord, []);
     newWord.parseLetters();
+    newWord.guessString();
     function userInput() {
         inquirer
             .prompt([
@@ -43,16 +44,16 @@ function newGame() {
                             newWord.letters[i].guess(answers.guess);
                             break;
                     }; //Marks letters.guessed as true when correctly guessed
-                    newWord.letters[i].display();
                     switch (newWord.letters[i].guessed) {
                         case false:
                             currentUnguessedCount++;
                     };
                 };
+                newWord.guessString();
                 switch (currentUnguessedCount) {
                     case 0:
                         winCount++;
-                        console.log("Congrats! You've won!\nSo far, you've won " + winCount + " games!");
+                        console.log("Congrats! You've won!\nSo far, you've won " + winCount + " games!\n----------------------------\nHere's your next word!");
                         newGame();
                         break;
                     default:
@@ -63,4 +64,5 @@ function newGame() {
     };
     userInput();
 }
+console.log("Welcome! Here's your first word...")
 newGame();

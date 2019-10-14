@@ -1,15 +1,16 @@
 var newLetter;
 
-function Letter(letter,guessed) {
+function Letter(letter,guessed,current) {
     this.letter = letter;
     this.guessed = guessed;
-    this.display = function toString() {
+    this.current = current;
+    this.display = function (){
         switch (this.guessed) {
             case true:
-                console.log(this.letter);
+                this.current = this.letter;
                 break;
             case false:
-                console.log("_");
+                this.current = "_";
                 break;
         };
     };
