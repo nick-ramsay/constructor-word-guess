@@ -20,7 +20,21 @@
 ## Instructions
 - The constructor-word-guess application is opened with the following command: ```node index.js```
 
-- To play the game, use the following steps:
+- To play the game, enter a lowercase letter and press enter. If the letter is correct, the underscore(s) concealing the letter will change to the letter you've guessed.
+
+![Constructor Word Guess Functionality](https://github.com/nick-ramsay/readme-images/blob/master/constructor-word-guess/functionality.jpg?raw=true)
+
+- If you guess all the correct letters, you will score a win and your next word will be given to you:
+
+![Constructor Word Guess Functionality](https://github.com/nick-ramsay/readme-images/blob/master/constructor-word-guess/functionality_win.jpg?raw=true)
+
+- If you select an incorrect letter, one point will be deducted from your Guesses Remaining total:
+
+![Constructor Word Guess Functionality](https://github.com/nick-ramsay/readme-images/blob/master/constructor-word-guess/functionality_wrong_guess.jpg?raw=true)
+
+- If you run out of guesses, you will be given a new word and your allowed guesses will be reset to ten:
+
+![Constructor Word Guess Functionality](https://github.com/nick-ramsay/readme-images/blob/master/constructor-word-guess/functionality_wrong_guess_loss.jpg?raw=true)
 
 ## Built With
 - The constructor-word-guess application was built using Node.js and the following Node Package Manage modules:
